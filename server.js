@@ -1,10 +1,12 @@
+require("dotenv").config();
 const express = require('express');
 const bodyParser = require('body-parser');
 const Web3 = require('web3');
+const {APIADDRESS, PRIVATEKEY} = process.env
 const config = require('./config.json');
 
-const walletPrivateKey = process.env.walletPrivateKey;
-const web3 = new Web3('https://mainnet.infura.io/v3/_your_api_key_here_');
+const walletPrivateKey = PRIVATEKEY;
+const web3 = new Web3(APIADDRESS);
 
 web3.eth.accounts.wallet.add(walletPrivateKey);
 const myWalletAddress = web3.eth.accounts.wallet[0].address;
